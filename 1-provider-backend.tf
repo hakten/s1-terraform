@@ -1,11 +1,11 @@
 provider "aws" {
-  region = "us-east-2"
+  region = ""
 }
 
 terraform {
     backend "s3" {
     bucket = "terraform-tfstate-huseyin"
-    key    = "p1-terraform"
+    key    = ""
     region = "us-east-1"
   }
 }
