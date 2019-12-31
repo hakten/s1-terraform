@@ -1,4 +1,4 @@
-resource "aws_instance" "mysql" {
+resource "aws_instance" "backup" {
   instance_type               = var.instance_type
   ami                         = var.ami-amazon-linux-2[var.region]
   subnet_id                   = aws_subnet.priv-1.id
@@ -8,6 +8,6 @@ resource "aws_instance" "mysql" {
   user_data = file("./files/userdata-db")
   
   tags = {
-    Name = "Database"
+    Name = "Backup"
   }
 }
