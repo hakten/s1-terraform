@@ -18,8 +18,8 @@ variable "az" {
   default = ["us-east-1a","us-east-1b","us-east-1c"]
 }
 
-variable "ami" {
-  default = var.ami-centos-7[var.region]
+variable "ami-amazon-linux-2" {
+  default = "ami-00068cd7555f543d5"
 }
 
 variable "ami-centos-7" {
