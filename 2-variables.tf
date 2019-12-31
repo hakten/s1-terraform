@@ -27,7 +27,10 @@ variable "instance_type" {
 }
 
 variable "ami-amazon-linux-2" {
-  default = "ami-00068cd7555f543d5"
+  default = {
+    "us-east-1" = "ami-00068cd7555f543d5"
+    "us-east-2" = "ami-0dacb0c129b49f529"
+  }
 }
 
 variable "ami-centos-7" {
