@@ -3,6 +3,6 @@ resource "aws_route_table" "priv-rtb" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.natgw.id
+    nat_gateway_id = aws_nat_gateway.nat.id
   }
 }
