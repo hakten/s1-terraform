@@ -18,6 +18,10 @@ variable "az" {
   default = ["us-east-1a","us-east-1b","us-east-1c"]
 }
 
+variable "instance_type" {
+  default = "t2.micro"
+}
+
 variable "ami-amazon-linux-2" {
   default = "ami-00068cd7555f543d5"
 }
