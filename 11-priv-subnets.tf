@@ -7,6 +7,7 @@ resource "aws_subnet" "priv-1" {
     Name = "priv-1"
   }
 }
+
 resource "aws_subnet" "priv-2" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.priv-cidr[1]
@@ -16,6 +17,7 @@ resource "aws_subnet" "priv-2" {
     Name = "priv-2"
   }
 }
+
 resource "aws_subnet" "priv-3" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.priv-cidr[2]

@@ -30,6 +30,7 @@ variable "ami-amazon-linux-2" {
   default = {
     "us-east-1" = "ami-00068cd7555f543d5"
     "us-east-2" = "ami-0dacb0c129b49f529"
+    "us-west-1" = "ami-0b2d8d1abb76a53d8"
   }
 }
 
