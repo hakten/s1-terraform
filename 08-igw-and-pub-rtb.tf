@@ -17,14 +17,14 @@ resource "aws_route_table" "pub-rtb" {
 
 
 resource "aws_route_table_association" "pub-1" {
-  route_table_id = aws_vpc.vpc.pub-rtb.id
+  route_table_id = aws_route_table.pub-rtb.id
   subnet_id      = aws_subnet.pub-1.id
 }
 resource "aws_route_table_association" "pub-2" {
-  route_table_id = aws_vpc.vpc.pub-rtb.id
+  route_table_id = aws_route_table.pub-rtb.id
   subnet_id      = aws_subnet.pub-2.id
 }
 resource "aws_route_table_association" "pub-3" {
-  route_table_id = aws_vpc.vpc.pub-rtb.id
+  route_table_id = aws_route_table.pub-rtb.id
   subnet_id      = aws_subnet.pub-3.id
 }
