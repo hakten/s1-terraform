@@ -1,5 +1,5 @@
 resource "aws_vpc" "vpc" {
-  cidr_block       = var.cidr
+  cidr_block       = "${var.cidr}"
   enable_dns_hostnames = "true"
 
   tags = {
@@ -9,13 +9,13 @@ resource "aws_vpc" "vpc" {
 }
 
 resource "aws_subnet" "public-subnet" {
-  vpc_id                  = aws_vpc.vpc.id
+  vpc_id                  = "${aws_vpc.vpc.id}"
   count                   = "${length(var.azs)}"
   availability_zone       = "${element(var.azs,count.index)}"
   cidr_block              = "${element(var.public_subnets,count.index)}"
   map_public_ip_on_launch = true
   
   tags = {
-    Name = "${var.Environment}-private-subnet-${count.index+1}"
+    Name = "${var.Environment}-Public-Subnet-${count.index+1}"
   }
 }
