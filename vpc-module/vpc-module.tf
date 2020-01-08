@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "./vpc-module"
+  source = "./module"
 
 vpc-cidr    = "10.0.0.0/16"
 vpc-name    = "Wordpress"
