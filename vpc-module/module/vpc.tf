@@ -31,3 +31,20 @@ resource "aws_subnet" "private-subnets" {
     Name = "${var.Environment}-Private-Subnet-${count.index+1}"
   }
 }
+
+resource "aws_internet_gateway" "igw" {
+  vpc_id = "${aws_vpc.vpc.id}"
+}
+
+resource "aws_route_table" "public_route_table" {
+  vpc_id = "${aws_vpc.vpc.id}"
+
+  route {
+    cidr_block  = "0.0.0.0/0"
+    gateway_id  = "${aws_internet_gateway.igw.id}"
+  }
+    tags = {
+    Name = "${var.Environment}-Public_Route_Table"
+  }
+}
+
