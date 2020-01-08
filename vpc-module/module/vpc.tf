@@ -34,6 +34,10 @@ resource "aws_subnet" "private_subnets" {
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = "${aws_vpc.vpc.id}"
+
+  tags = {
+    Name = "${var.Environment}-Internet_Gateway"
+  }
 }
 
 resource "aws_route_table" "public_route_table" {
@@ -56,11 +60,31 @@ resource "aws_route_table_association" "public_route_table_association" {
 
 resource "aws_eip" "eip" {
   vpc      = true
+
+  tags = {
+    Name = "${var.Environment}-Elastic_IP"
+  }
 }
 
 resource "aws_nat_gateway" "nat" {
   subnet_id     = "${aws_subnet.public_subnets[1].id}"
   allocation_id = "${aws_eip.eip.id}"
+
+  tags = {
+    Name = "${var.Environment}-Nat_Gateway"
+  }
+}
+
+resource "aws_route_table" "private_route_table" {
+  vpc_id = "${aws_vpc.vpc.id}"
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = "${aws_nat_gateway.nat.id}"
+  }
+    tags = {
+    Name = "${var.Environment}-Private_Route_Table"
+  }
 }
 
 
