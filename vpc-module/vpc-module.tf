@@ -5,8 +5,11 @@ provider "aws" {
 module "vpc" {
   source = "./module"
 
-vpc-cidr    = "10.0.0.0/16"
-vpc-name    = "Wordpress"
-environment = "Test"
+cidr        = "10.0.0.0/16"
+name        = "Wordpress"
+Environment = "Test"
+azs         = ["us-east-1a","us-east-1b","us-east-1c"]
+
+
 }
 

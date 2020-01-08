@@ -1,5 +1,8 @@
-variable "vpc-cidr" {}
-variable "vpc-name" {}
-variable "environment" {}
+variable "cidr" {}
+variable "name" {}
+variable "Environment" {}
+variable "azs" {}
+variable "public-subnet-cidr-block" {}
+
 
 
