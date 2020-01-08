@@ -14,4 +14,5 @@ private_subnets = ["10.0.11.0/24","10.0.12.0/24","10.0.13.0/24"]
 
 tags = {
   Environment   = "Test_New"
+ }
 }
