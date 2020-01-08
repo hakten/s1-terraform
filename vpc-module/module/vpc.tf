@@ -3,8 +3,8 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = "true"
 
   tags = {
-    Name = "${var.Environment}-${var.name}"
-    Environment = "${var.Environment}"
+    Name        = "${var.tags.[Environment]}-${var.name}"
+    Environment = "${var.tags.[Environment]}"
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_subnet" "public_subnets" {
   map_public_ip_on_launch = true
   
   tags = {
-    Name = "${var.Environment}-Public_Subnet-${count.index+1}"
+    Name = "${var.tags.[Environment]}-Public_Subnet-${count.index+1}"
   }
 }
 
@@ -28,7 +28,7 @@ resource "aws_subnet" "private_subnets" {
   map_public_ip_on_launch = false
   
   tags = {
-    Name = "${var.Environment}-Private_Subnet-${count.index+1}"
+    Name = "${var.tags.[Environment]}-Private_Subnet-${count.index+1}"
   }
 }
 
@@ -36,7 +36,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = "${aws_vpc.vpc.id}"
 
   tags = {
-    Name = "${var.Environment}-Internet_Gateway"
+    Name = "${var.tags.[Environment]}-Internet_Gateway"
   }
 }
 
@@ -48,7 +48,7 @@ resource "aws_route_table" "public_route_table" {
     gateway_id  = "${aws_internet_gateway.igw.id}"
   }
     tags = {
-    Name = "${var.Environment}-Public_Route_Table"
+    Name = "${var.tags.[Environment]}-Public_Route_Table"
   }
 }
 
@@ -62,7 +62,7 @@ resource "aws_eip" "eip" {
   vpc      = true
 
   tags = {
-    Name = "${var.Environment}-Elastic_IP"
+    Name = "${var.tags.[Environment]}-Elastic_IP"
   }
 }
 
@@ -71,7 +71,7 @@ resource "aws_nat_gateway" "nat" {
   allocation_id = "${aws_eip.eip.id}"
 
   tags = {
-    Name = "${var.Environment}-Nat_Gateway"
+    Name = "${var.tags.[Environment]}-Nat_Gateway"
   }
 }
 
@@ -83,7 +83,7 @@ resource "aws_route_table" "private_route_table" {
     nat_gateway_id = "${aws_nat_gateway.nat.id}"
   }
     tags = {
-    Name = "${var.Environment}-Private_Route_Table"
+    Name = "${var.tags.[Environment]}-Private_Route_Table"
   }
 }
 
