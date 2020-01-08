@@ -53,3 +53,14 @@ resource "aws_route_table_association" "public_route_table_association" {
   subnet_id      = "${aws_subnet.public-subnets[count.index].id}"
   count          = "${length(var.azs)}"
 }
+
+resource "aws_eip" "eip" {
+  vpc      = true
+}
+
+resource "aws_nat_gateway" "nat" {
+  subnet_id     = "${aws_subnet.public_subnets[1].id}"
+  allocation_id = "${aws_eip.eip.id}"
+}
+
+
