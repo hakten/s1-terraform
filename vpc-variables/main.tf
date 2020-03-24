@@ -50,19 +50,18 @@ output "public_subnet_id" {
 }
 
 output "public_subnet_cidr" {
-  value = "${aws_subnet.public_subnet.*.cidr_block}"
+  value = "${aws_subnet.public_subnet.0.cidr_block}"
 }
 
-output "public_subnet_arn" {
-  value = "${aws_subnet.public_subnet.0.arn}"
-}
 
 output "public_subnet_vars" {
   value = "${var.public_subnet}"
 }
 
-
+output "public_subnet_vars_other" {
+  value = "${var.public_subnet[0]}"
+}
 
 output "concat" {
-  value = "${concat(aws_subnet.public_subnet.*.id, aws_subnet.public_subnet.*.arn, aws_subnet.public_subnet.*.cidr_block)}"
+  value = "${concat(aws_subnet.public_subnet.*.id, aws_subnet.public_subnet.*.cidr_block)}"
 }
