@@ -32,7 +32,7 @@ resource "aws_vpc" "vpc" {
 }
 
 resource "aws_subnet" "public_subnet" {
-  count                      = 3
+  count                      = "${length(var.public_subnet)}"
   vpc_id                     = "${aws_vpc.vpc.id}"
   cidr_block                 = "${var.public_subnet.[count.index]}"
   availability_zone          = "${var.az.[count.index]}"
