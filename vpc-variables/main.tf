@@ -53,13 +53,12 @@ output "public_subnet_cidr" {
   value = "${aws_subnet.public_subnet.*.cidr_block}"
 }
 
-output "public_subnet_cidr" {
+output "public_subnet_arn" {
   value = "${aws_subnet.public_subnet.*.arn}"
 }
 
 
 
 output "concat" {
-  count = 3
   value = "${concat(aws_subnet.public_subnet.*.id, aws_subnet.public_subnet.*.arn, aws_subnet.public_subnet.*.cidr_block)}"
 }
