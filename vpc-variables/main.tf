@@ -1,5 +1,5 @@
 variable "cidr_block" {
-  default = "10.0.0.0"
+  default = "10.0.0.0/16"
   description = "Cidr block of the vpc."
 }
 
@@ -8,7 +8,7 @@ variable "vpc_name" {
 }
 
 variable "public_subnet" {
-  default = ["10.0.0.1","10.0.0.2","10.0.0.3"]
+  default = ["10.0.0.1/24","10.0.0.2/24","10.0.0.3/24"]
 }
 
 variable "az" {
