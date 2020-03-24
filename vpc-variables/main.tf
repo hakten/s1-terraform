@@ -54,7 +54,7 @@ output "public_subnet_cidr" {
 }
 
 output "public_subnet_arn" {
-  value = "${aws_subnet.public_subnet[0].arn}"
+  value = "${aws_subnet.public_subnet.[0].arn}"
 }
 
 output "public_subnet_vars" {
