@@ -32,9 +32,10 @@ resource "aws_vpc" "vpc" {
 }
 
 resource "aws_subnet" "public_subnet" {
+  count                      = 3
   vpc_id                     = "${aws_vpc.vpc.id}"
   cidr_block                 = "${var.public_subnet.[*].cidr}"
-    availability_zone        = "${var.az.[*]}"
+  availability_zone          = "${var.az.[*]}"
   map_public_ip_on_launch    = true
 
 
