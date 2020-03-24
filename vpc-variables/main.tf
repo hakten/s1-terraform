@@ -43,3 +43,8 @@ resource "aws_subnet" "public_subnet" {
     Name = "public_subnet"
   }
 }
+
+
+output "public_subnet" {
+  value = "aws_subnet.public_subnet.*.id"
+}
