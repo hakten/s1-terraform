@@ -46,5 +46,5 @@ resource "aws_subnet" "public_subnet" {
 
 
 output "public_subnet" {
-  value = "aws_subnet.public_subnet.*.id"
+  value = "${aws_subnet.public_subnet.*.id}"
 }
