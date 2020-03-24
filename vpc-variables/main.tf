@@ -58,7 +58,7 @@ output "public_subnet_arn" {
 }
 
 output "public_subnet_vars" {
-  value = "${var.public_subnet.[*]}"
+  value = "${var.public_subnet}"
 }
 
 
