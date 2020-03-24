@@ -57,6 +57,10 @@ output "public_subnet_arn" {
   value = "${aws_subnet.public_subnet.*.arn}"
 }
 
+output "public_subnet_vars" {
+  value = "${var.public_subnet.*}"
+}
+
 
 
 output "concat" {
