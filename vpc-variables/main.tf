@@ -12,7 +12,7 @@ variable "public_subnet" {
 }
 
 variable "az" {
-  default= ["eu-west-1a","eu-west-1b"]
+  default= ["eu-west-1a","eu-west-1b","eu-west-1c"]
 }
 
 
@@ -35,7 +35,7 @@ resource "aws_subnet" "public_subnet" {
   count                      = "${length(var.public_subnet)}"
   vpc_id                     = "${aws_vpc.vpc.id}"
   cidr_block                 = "${element(var.public_subnet, count.index)}"
-  availability_zone          = "${var.az.[count.index]}"
+  availability_zone          = "${element(var.azs, count.index)}"
   map_public_ip_on_launch    = true
 
 
@@ -45,6 +45,10 @@ resource "aws_subnet" "public_subnet" {
 }
 
 
-output "public_subnet" {
+output "public_subnet_id" {
   value = "${aws_subnet.public_subnet.*.id}"
+}
+
+output "public_subnet_cidr" {
+  value = "${aws_subnet.public_subnet.*.cidr_block}"
 }
