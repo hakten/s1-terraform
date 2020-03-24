@@ -61,5 +61,5 @@ output "public_subnet_cidr" {
 
 output "concat" {
   count = 3
-  value = "${concat(aws_subnet.public_subnet.(count.index).id, aws_subnet.public_subnet.*.arn, aws_subnet.public_subnet.*.cidr_block)}"
+  value = "${concat(aws_subnet.public_subnet."${count.index}".id, aws_subnet.public_subnet.*.arn, aws_subnet.public_subnet.*.cidr_block)}"
 }
