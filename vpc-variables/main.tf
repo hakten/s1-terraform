@@ -12,7 +12,7 @@ variable "public_subnet" {
 }
 
 variable "az" {
-  default= ["eu-west-1a","eu-west-1b","eu-west-1c"]
+  default= ["eu-west-1a","eu-west-1b"]
 }
 
 
